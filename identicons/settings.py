@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'generator',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -39,7 +40,9 @@ ROOT_URLCONF = 'identicons.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,3 +102,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
+
+
+# Media
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+
+
+# Authentication
+
+LOGIN_URL = 'users:signin'
+
+
+# Celery
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_IMPORTS = ['generator.tasks', ]
+
+
+# Emails
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'djangopruebas@yandex.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+
+
+# Storages
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'django-identicons'

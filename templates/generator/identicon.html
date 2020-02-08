@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Identicon</title>
+  </head>
+  <body>
+    <p style="color: green;">{{ message }}</p>
+    <h1>Generador</h1>
+    <a href="{% url 'users:signoff' %}">
+      <button>Cerrar sesión</button>
+    </a>
+
+    <hr />
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <p>
+        <label for="identicon-id">Sube tu imagen: </label>
+        <input type="file" name="identicon" />
+      </p>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <hr />
+
+    <ul>
+      {% for word in words %}
+      <li>{{ word.word }}</li>
+      {% endfor %}
+    </ul>
+
+    <div>
+      {% for identicon in identicons %}
+      <img src="{{ identicon.image.url }}" alt="imagen">
+      {% endfor %}
+      
+    </div>
+  </body>
+</html>
