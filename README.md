@@ -62,3 +62,9 @@ INSTALLED_APPS = [
     'my_app',
 ]
 ```
+
+## Instalar requerimientos de un proyecto
+
+```command-line
+pip install -r requirements.txt
+```
