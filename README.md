@@ -45,3 +45,20 @@ Correr el servidor
 ```command-line
 python manage.py runserver
 ```
+
+## Crear una aplicación
+
+Generar aplicación desde CLI de Django
+
+```command-line
+python manage.py startapp my_app
+```
+
+Registrarla en `proyecto/settings.py`
+
+```python
+INSTALLED_APPS = [
+    ...,
+    'my_app',
+]
+```
